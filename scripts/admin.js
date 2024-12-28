@@ -40,9 +40,15 @@ function fetchBooks(){
 
 }
 // create a book card
-function createBookCard(){
-    
-}
+function createBookCard(book){
+    const card = document.createElement("div");
+    card.className="card";
+    card.innerHTML=`<h3>${book.title}</h3>
+    <p><strong>AUTHOR:<strong>${book.author}</p>
+    <p><strong>CATEGORY:<strong>${book.author}</p>
+    <p><strong>AVAILABILITY:<strong>${book.author}</p>
+    <button>${book.isVerified?"verified":"verify Book"}</button>
+          <button>Delete Book</button>`
 // verify book
 const verifyButton=Clipboard.queryselector("verify");
 if(confirm("Are you sure toverify..?")){
