@@ -17,7 +17,7 @@ form.addEventListener("submit", (e) => {
         author,
         category,
         isVerified: false,
-        borrowedDays: null;
+        borrowedDays: null,
         availability: "Available"
     }
     fetch("http://localhost:3000/books", {
@@ -37,6 +37,13 @@ form.addEventListener("submit", (e) => {
 });
 // fetch books
 function fetchBooks(){
+    fetch("http://localhost:3000/books", {
+        .then((response) => response.json())
+        .then((books) => {
+            bookgrid.innerHTML="";
+            books.foreach((book)=>createBookCard(book));
+        })
+        .catch((err) => console.error("error fetching book:", err))
 
 }
 // create a book card
@@ -67,3 +74,5 @@ fetch("http://localhost:3000/books", {
     .catch((err) => console.error("error Verifying book:", err));
 }
 });
+bookgrid.appendChild(card);
+}
